@@ -18,13 +18,13 @@ public class JWTTest {
                 .setSubject("admin")
                 .setExpiration(exp)
                 .signWith(key).compact();
+        System.out.println("Token:");
         System.out.println(jws);
         if(Jwts.parser().setSigningKey(key).parseClaimsJws(jws).getBody().getSubject().equals("test")) {
             System.out.println("test");
         }
         String encoded = Encoders.BASE64.encode(key.getEncoded());
+        System.out.println("Shared secret:");
         System.out.println(encoded);
-
-
     }
 }
